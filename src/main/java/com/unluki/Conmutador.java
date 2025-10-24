@@ -42,14 +42,18 @@ public class Conmutador {
                 String nombreDB = parsearTag(peticionXml, "database");
                 String consultaSql = parsearTag(peticionXml, "sql");
 
+                consultarServidor(nombreDB,consultaSql);
+
+
             } catch (Exception e) {
                 System.out.println("cagamos pero mas adelante");
             }
         }
 
-        private String consultaSQL(String nombreDB, String consultaSql){
+        private String consultarServidor(String nombreDB, String consultaSql){
             String IP_Firebird = "123";
             String IP_Postgres = "456";
+            String IP_Mysql = "789";
 
             switch (nombreDB){
                 case "Biblioteca" -> System.out.println("algo");
