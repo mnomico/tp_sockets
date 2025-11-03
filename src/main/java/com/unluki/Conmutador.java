@@ -1,11 +1,11 @@
 package com.unluki;
 
 import java.io.DataInputStream;
-import java.io.DataOutput;
 import java.io.DataOutputStream;
 import java.io.IOException;
 import java.net.ServerSocket;
 import java.net.Socket;
+
 
 public class Conmutador {
     public static void main(String[] args){
@@ -20,7 +20,7 @@ public class Conmutador {
 
             }
         } catch (IOException e){
-            System.out.println("cagamos");
+            System.out.println("no se pudo iniciar el servidor");
             e.printStackTrace();
         }
     }
@@ -33,32 +33,35 @@ public class Conmutador {
 
         @Override
         public void run() {
-            try {
-                DataInputStream in = new DataInputStream(socket.getInputStream());
-                DataOutputStream out = new DataOutputStream(socket.getOutputStream());
+            try (DataInputStream in = new DataInputStream(socket.getInputStream());
+                 DataOutputStream out = new DataOutputStream(socket.getOutputStream()))
+            {
                 String peticionXml = in.readUTF();
-                System.out.println("a");
+                System.out.println("Petición recibida:\n" + peticionXml);
 
                 String nombreDB = parsearTag(peticionXml, "database");
                 String consultaSql = parsearTag(peticionXml, "sql");
 
-                consultarServidor(nombreDB,consultaSql);
+                String respuestaXml = consultarServidor(nombreDB, consultaSql);
+
+                System.out.println("respuesta:\n" + respuestaXml);
+                out.writeUTF(respuestaXml);
 
 
             } catch (Exception e) {
-                System.out.println("cagamos pero mas adelante");
+                System.out.println("No se consultar el servidor");
             }
         }
 
         private String consultarServidor(String nombreDB, String consultaSql){
-            String IP_Firebird = "123";
-            String IP_Postgres = "456";
-            String IP_Mysql = "789";
 
             switch (nombreDB){
-                case "Biblioteca" -> System.out.println("algo");
-                case "Supermercado" -> System.out.println("algo 2");
-                case "despues se fija" -> System.out.println("algo 3");
+                case "biblioteca" :
+                    return FireBird.ejecutarConsulta(consultaSql);
+                case "supermercado" :
+                    System.out.println("algo 2");
+                case "despues se fija" :
+                    System.out.println("algo 3");
             }
 
             return "";
