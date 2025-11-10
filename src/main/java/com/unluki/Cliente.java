@@ -9,7 +9,7 @@ import java.util.Scanner;
 public class Cliente {
 
     // IP y Puerto del Servidor Switch
-    private static final String IP_SERVIDOR_CONMUTADOR = "192.168.100.84";
+    private static final String IP_SERVIDOR_CONMUTADOR = "localhost";
     // private static final String IP_SERVIDOR_SWITCH = "localhost"; // (Usar si pruebas en la misma PC)
     private static final int PUERTO_SERVIDOR_CONMUTADOR = 6969;
 
