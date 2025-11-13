@@ -3,7 +3,7 @@ package com.unluki;
 import java.sql.*;
 
 public class FireBird {
-    private static final String IP_FIREBIRD = "localhost"; // aca hice la prueba con la bd en el mismo servidor conmutador
+    private static final String IP_FIREBIRD = "192.168.1.51"; // aca hice la prueba con la bd en el mismo servidor conmutador
     private static final int PUERTO_FIREBIRD = 3050;
     private static final String RUTA_BASE_DATOS = "/var/lib/firebird/3.0/data/biblioteca.fdb";
     private static final String USUARIO_FB = "SYSDBA";

@@ -4,7 +4,7 @@ import java.sql.*;
 
 public class PostgreSQL {
 
-    private static final String host = "localhost";
+    private static final String host = "192.168.1.52";
     private static final String port = "5432";
     private static final String database = "supermercado";
     private static final String user = "sysdba";
