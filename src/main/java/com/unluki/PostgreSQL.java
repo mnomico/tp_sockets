@@ -12,16 +12,6 @@ public class PostgreSQL {
     private static final String URL = "jdbc:postgresql://" + host + ":" + port + "/" + database;
 
     public static String ejecutarConsulta(String sql) {
-        try (Connection conn = DriverManager.getConnection(URL, user, password)) {
-            Statement statement = conn.createStatement();
-            int rowsAffected = statement.executeUpdate(sql);
-            return "Filas afectadas: " + rowsAffected;
-        } catch (SQLException ex) {
-            return "Error SQL: " + ex.getMessage();
-        }
-    }
-
-    public String ejecutarSELECT(String sql) throws SQLException {
         sql = sql.trim();
         try (Connection conn = DriverManager.getConnection(URL, user, password)) {
 
