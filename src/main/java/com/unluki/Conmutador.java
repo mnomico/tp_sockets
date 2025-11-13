@@ -6,7 +6,6 @@ import java.io.IOException;
 import java.net.ServerSocket;
 import java.net.Socket;
 
-
 public class Conmutador {
     public static void main(String[] args){
         try (ServerSocket serverSocket = new ServerSocket(6969)){
@@ -59,7 +58,7 @@ public class Conmutador {
                 case "biblioteca" :
                     return FireBird.ejecutarConsulta(consultaSql);
                 case "supermercado" :
-                    System.out.println("algo 2");
+                    return PostgreSQL.ejecutarConsulta(consultaSql);
                 case "despues se fija" :
                     System.out.println("algo 3");
             }
